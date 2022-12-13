@@ -1,0 +1,44 @@
+
+
+
+
+
+<button (click)=" toggle()"  class="btn btn-outline-danger mt-4">Close</button>
+<div class="grid grid-cols-3 
+gap-2   
+max-md:grid-cols-2    
+max-sm:grid-cols-1   
+justify-items-center items-center
+overflow-y-scroll h-full w-full m-5">
+
+
+
+<div *ngFor="let item of this.cart" class="bg-slate-100 
+flex  
+justify-center 
+items-center
+flex-col">
+
+<h1>Name {{item.name}}</h1>
+
+<h1>Brand {{item.brand}}</h1>
+
+
+    <img src="{{item.img}}" alt="" class="h-3/6 w-3/6 rounded">
+
+    <h1>price {{item.price}}</h1>
+<h1>quantity {{item.quantity}}</h1>
+    <div class="buttons">
+
+<button class="btn btn-primary"  (click)="this.shop.delete(item.id)">Delete</button>
+
+
+</div>
+
+</div>
+
+
+
+</div>
+<button class="btn btn-success">Buy</button>
+

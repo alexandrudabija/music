@@ -1,0 +1,86 @@
+<header class="flex justify-items-center  items-baseline flex-col">
+
+    <div class=" w-full h-16 bg-slate-100/70  mt-10	max-sm:h-24 flex items-center justify-center">
+        <h1 class="text-center text-5xl max-xl:text-3xl  max-md:text-2xl ">50 % of discount for students </h1>
+    </div>
+
+
+
+
+
+
+ 
+
+
+
+</header>
+
+
+
+
+
+
+<div id="main" class="flex  justify-evenly  items-center flex-col  ">
+
+
+        <button  *ngIf="!showCart"  class=" btn btn-outline-success mt-2" (click)="  toggleCart()">My Items </button>
+        {{this.cart.length}}
+
+<!-- Cart Show ! -->
+
+    <!--  toggleCart() this button open the cart  -->
+
+    <!--   (onClose)="toggleCart() but this receive the command for close cart from shop component-->
+
+    <app-cart class="absolute h-full w-full  bg-slate-100/70 flex  justify-center items-center flex-col  " *ngIf="showCart" 
+        (onClose)="toggleCart()" [cart]="this.cart">
+        <!--  [cart]="this.cart" will send the array of objects -->
+
+
+
+    </app-cart>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <swiper  *ngIf="!showCart"  [config]="swiperConfig"
+
+ 
+    [slidesPerView]="3" 
+    [spaceBetween]="20" 
+    [navigation]="true" 
+    [pagination]="{ clickable: true }"
+    [scrollbar]="{ draggable: true }"
+
+
+    
+        class="swiper " effect="cube">
+<!-- class="slider-card " -->
+        <ng-template swiperSlide *ngFor="let obj of arrayObj"  class="flex justify-center items-center flex-col rounded  shadow-black hover:shadow-indigo-500/40">
+
+
+            <h1>{{obj.name}}</h1>
+
+            <img src="{{obj.img}}" class="h-2/3 w-2/3 rounded">
+
+
+
+            <button (click)="addOnCart(obj.id)" class="btn btn-outline-danger mt-6">Add on Cart</button>
+
+
+
+
+        </ng-template>
+
+    </swiper>
+</div>
